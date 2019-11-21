@@ -16,6 +16,8 @@
   "dependencies": {
     "cross-env": "^6.0.3",
     "mysql": "^2.17.1",
-    "nodemon": "^1.19.3"
+    "nodemon": "^1.19.3",
+    "redis": "^2.8.0",
+    "xss": "^1.0.6"
   }
 }

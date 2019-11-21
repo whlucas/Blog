@@ -5,7 +5,15 @@ const querystring = require('querystring')
 const handleBLogRouter = require('./src/router/blog')
 const handleUserRouter = require('./src/router/user')
 
+// 引入写日志的方法
+const {access} = require('./src/utils/log')
+
 // session 数据
+
+// 为什么session要存入redis
+// 1. 用户太多存不下
+// 2. 进程间数据不互通
+// 3. 重启服务清除原先存的session
 const SESSION_DATA = {}
 
 // 一个用于处理post data 的函数
@@ -38,6 +46,9 @@ const getPostData = (req) => {
 }
 
 const serverHandle = (req, res) => {
+    // 记录access log
+    access(`${req.method} -- ${req.url} -- ${req.headers['user-agent']} -- ${Date.now()}`)
+
     // 设置返回格式 JSON
     res.setHeader('Content-type', 'application/json')
 

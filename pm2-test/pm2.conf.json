@@ -1,0 +1,18 @@
+{
+    "apps": {
+        "name": "pm2-test-server",
+        "script": "app.js",
+        "watch": true,
+        "ignore_watch": [
+            "node_modules",
+            "logs"
+        ],
+        "error_file": "logs/err.log",
+        "out_file": "logs/out.log",
+        "log_date_format": "YYYY-MM-DD HH:mm:ss",
+        "instances": 4
+    },
+    "introduce":{
+        "introduce": "一定要在apps里面配置，这是规定，name是什么你的这个监听的文件名就是什么，script是监听的文件地址,watch是文件变化了是否自动重启，ignore_watch是那些不需要监听,error_file错误日志放在哪,out_file输出日志放在哪,log_date_format每一条日志时间戳的格式是什么样子的,最后去改package.json里面按照这个配置启动,instances开启几个进程，多个进程就有多个日志记录"
+    }
+}

@@ -10,9 +10,9 @@ const hangleUserRouter = (req, res) => {
     const method = req.method // GET POST
 
     // 登录
-    if (method === 'GET' && req.path === '/api/user/login') {
-        // const { username, password } = req.body
-        const { username, password } = req.query
+    if (method === 'POST' && req.path === '/api/user/login') {
+        const { username, password } = req.body
+        // const { username, password } = req.query
         const result = login(username, password)
         return result.then(data => {
             // 如果能查出来数据
@@ -28,15 +28,17 @@ const hangleUserRouter = (req, res) => {
         })
     }
 
-    if (method === 'GET' && req.path === '/api/user/login-test'){
-        // 登录验证的时候去判断session
-        if (req.session.username){
-            return Promise.resolve(new SuccessModel({
-                session: req.session
-            }))
-        }
-        return Promise.resolve(new ErrorModel('尚未登录'))
-    }
+
+    // 这个登录验证以及加到接口里面去了，这里暂时先不要了
+    // if (method === 'GET' && req.path === '/api/user/login-test'){
+    //     // 登录验证的时候去判断session
+    //     if (req.session.username){
+    //         return Promise.resolve(new SuccessModel({
+    //             session: req.session
+    //         }))
+    //     }
+    //     return Promise.resolve(new ErrorModel('尚未登录'))
+    // }
 }
 
 module.exports = hangleUserRouter
