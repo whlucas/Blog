@@ -26,6 +26,9 @@ const server = http.createServer((req, res) => {
 
 server.listen(8001)
 
+// 核心价值
+// 进程守护，多进程，日志记录
+
 // 这里我们通过npm run prd的方式来启动
 // "prd": "cross-env NODE_ENV=production pm2 start app.js" 如果是koa2一般是 pm2 start bin/www.js
 // 这样启动了之后控制台可以继续使用，说明后台运行，而之前的nodemon是前台运行
